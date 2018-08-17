@@ -10,38 +10,38 @@ exports.helloWorld = functions.https.onRequest((request,response) => {
 	{
 		let firstNumber = parseInt(app.getArgument('firstNumber'));
 		let secondNumber = parseInt(app.getArgument('secondNumber'));
-		app.tell('Respuesta: ' + (firstNumber + secondNumber));
+		app.tell('Answer: ' + (firstNumber + secondNumber));
 	}
 
 
-	function addMultiplicar(app)
+	function addMultiply(app)
 	{
 		let firstNumber = parseInt(app.getArgument('firstNumber'));
 		let secondNumber = parseInt(app.getArgument('secondNumber'));
-		app.tell('Respuesta: ' + (firstNumber * secondNumber));
+		app.tell('Answer: ' + (firstNumber * secondNumber));
 	}
 
-	function calcular_promedio(app)
+	function calculating_average(app)
 	{
-		let nota_uno = parseInt(app.getArgument('nota_uno'));
-		let nota_dos = parseInt(app.getArgument('nota_dos'));
-		let nota_tres = parseInt(app.getArgument('nota_tres'));
+		let var1 = parseInt(app.getArgument('var1'));
+		let var2 = parseInt(app.getArgument('var2'));
+		let var3 = parseInt(app.getArgument('var3'));
 
-		let promedio = ((nota_uno + nota_dos + nota_tres) / 3);
+		let average = ((var1 + var2 + var3) / 3);
 
-		if (promedio >= 12) {
-			app.tell('APROBADO\n\nTe encuentras aprobado con: ' + promedio.toFixed(2));
+		if (average >= 12) {
+			app.tell('APPROVED\n\nYour avgrage is approved as: ' + average.toFixed(2));
 		}else{
-			app.tell('DESAPROBADO\n\nTe encuentras desaprobado con: ' + promedio.toFixed(2));
+			app.tell('DISAPPROVED\n\nYour avgrage is not approved as: ' + average.toFixed(2));
 		}
 
 
 	}
 
 	const actionMap = new Map();
-	actionMap.set('sumar', addNumbers);
-	actionMap.set('multiplicar', addMultiplicar);
-	actionMap.set('calcular_promedio', calcular_promedio);
+	actionMap.set('add', addNumbers);
+	actionMap.set('multiply', addMultiply);
+	actionMap.set('calculating_average', calculating_average);
 
 
 	app.handleRequest(actionMap);
